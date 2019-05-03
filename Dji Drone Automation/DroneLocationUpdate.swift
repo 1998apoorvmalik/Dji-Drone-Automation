@@ -8,10 +8,14 @@
 
 import UIKit
 import DJISDK
+import Firebase
 
 class DroneMission: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
     
     @IBOutlet weak var mapView: MKMapView!
+    
+    var referenceFirebase: DatabaseReference!
+    var locationFirebase: [[String:Any]] = []
     
     var homePointAnnotations = DJIImageAnnotation(identifier: "homeAnnotation", customImage: UIImage(named: "homePoint")!)
     var aircraftAnnotation = DJIImageAnnotation(identifier: "aircraftAnnotation", customImage: UIImage(named: "aircraft")!)
@@ -33,6 +37,18 @@ class DroneMission: UIViewController, MKMapViewDelegate, CLLocationManagerDelega
         super.viewDidLoad()
         self.mapView.delegate = self
         
+        //Firebase Setup
+        referenceFirebase = Database.database().reference()
+        
+        referenceFirebase.child("users").observe(.value, with: { snapshot in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshots
+                {
+                    self.locationFirebase.append(snap.value as! [String : String])
+                }
+            }
+        })
+        
         // Setting initial view on the map with aircraft's initial position (home coordinate)
         DJISDKManager.userAccountManager().logIntoDJIUserAccount(withAuthorizationRequired: true)
         let regionRadius: CLLocationDistance = 200
@@ -47,6 +63,15 @@ class DroneMission: UIViewController, MKMapViewDelegate, CLLocationManagerDelega
         
         mapView.region = coordinateRegion
         mapView.addAnnotations([self.aircraftAnnotation, self.homePointAnnotations])
+        
+        //Firebase Setup
+        
+        referenceFirebase.child("users").observe(.value, with: { snapshot in
+            let enumerator = snapshot.children
+            while let location = enumerator.nextObject() as? Location {
+                print(location)
+            }
+        })
         
         
         // Setting the listeners on aircraft's position and heading

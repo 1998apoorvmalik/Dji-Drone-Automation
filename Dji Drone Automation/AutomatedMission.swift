@@ -25,18 +25,7 @@ extension DroneMission {
     
     @IBAction func corrButtonPressed(_ sender: UIButton) {
         
-        
-        if homeCoordinate != nil {
-            destinationCoordinate = CLLocationCoordinate2DMake(homeCoordinate!.coordinate.latitude + offset, homeCoordinate!.coordinate.longitude + offset)
-            
-            destAnnotation.coordinate = destinationCoordinate!
-            mapView.addAnnotation(self.destAnnotation)
-        }
-        
-        else {
-            displayAlert(title: "Coordinate Update Error", text: "Destination coordinates not found on the server")
-        }
-        
+        getCoordinatesFirebase()
         initializeMission()
     }
     
@@ -47,10 +36,6 @@ extension DroneMission {
     
     
     func initializeMission () {
-        let distance = getDroneCoordinates().distance(from: CLLocation(latitude: destinationCoordinate!.latitude, longitude: destinationCoordinate!.longitude))
-        
-        displayAlert(title: "Total Distance", text: "The total journey distance is \(distance)")
-        
         flightController?.simulator?.setFlyZoneLimitationEnabled(false)
         flightController?.setNoviceModeEnabled(false)
         flightController?.setMaxFlightRadiusLimitationEnabled(false)
@@ -61,13 +46,13 @@ extension DroneMission {
         let landAction = DJILandAction()
         landAction.autoConfirmLandingEnabled = true
         let ledController = DJIMutableFlightControllerLEDsSettings()
-        ledController.frontLEDsOn = false
+        ledController.frontLEDsOn = true
         flightController?.setLEDsEnabledSettings(ledController)
   
         DJISDKManager.missionControl()?.scheduleElement(DJITakeOffAction())
         DJISDKManager.missionControl()?.scheduleElement(DJIGoToAction(altitude: 60)!)
         DJISDKManager.missionControl()?.scheduleElement(DJIGoToAction(coordinate: destinationCoordinate!, altitude: 30)!)
-        DJISDKManager.missionControl()?.scheduleElement(DJIShootPhotoAction())
+//        DJISDKManager.missionControl()?.scheduleElement(DJIShootPhotoAction())
         DJISDKManager.missionControl()?.scheduleElement(landAction)
         
     }
@@ -102,6 +87,24 @@ extension DroneMission {
     
     @IBAction func textReturnPress(_ sender: Any) {
         offset = NumberFormatter().number(from: textField.text!)!.doubleValue
+    }
+    
+    func getCoordinatesFirebase() {
+        if locationFirebase.isEmpty == false {
+            let latitude = Double(self.locationFirebase.last!["latitude"] as! String)!
+            let longitude = Double(self.locationFirebase.last!["longitude"] as! String)!
+            destinationCoordinate = CLLocationCoordinate2DMake(latitude ,longitude)
+            
+            destAnnotation.coordinate = destinationCoordinate!
+            mapView.addAnnotation(self.destAnnotation)
+            
+            let distance = getDroneCoordinates().distance(from: CLLocation(latitude: destinationCoordinate!.latitude, longitude: destinationCoordinate!.longitude))
+            
+            displayAlert(title: "Total Distance", text: "The total journey distance is \(distance)")
+        }
+        else {
+            displayAlert(title: "Coordinate Update Error", text: "Destination coordinates not found on the server")
+        }
     }
 }
 

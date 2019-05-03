@@ -8,6 +8,7 @@
 
 import UIKit
 import DJISDK
+import Firebase
 
 
 class ViewControllerMain: UIViewController, DJISDKManagerDelegate{
@@ -27,13 +28,29 @@ class ViewControllerMain: UIViewController, DJISDKManagerDelegate{
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        Auth.auth().signIn(withEmail: "apoorv258@gmail.com", password: "2e7f76b2") { [weak self] user, error in
+            guard self != nil else { return }
+            if error == nil {
+                self!.showAlertViewWithTitle(title:"Firebase Sign in", withMessage: "Sucessfully signed in")
+            }
+            else {
+                self!.showAlertViewWithTitle(title:"Firebase Sign in", withMessage: "Error while signing in")
+                Auth.auth().createUser(withEmail: "apoorv258@gmail.com", password: "2e7f76b2") { authResult, error in
+                    if error == nil {
+                        self!.showAlertViewWithTitle(title:"Firebase Registration", withMessage: "New user created, please restart the app")
+                    }
+                    else {
+                        self!.showAlertViewWithTitle(title:"Firebase Registration", withMessage: "Error while creating new user")
+                    }
+                }
+            }
+        }
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         DJISDKManager.registerApp(with: self)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     override func didReceiveMemoryWarning() {
