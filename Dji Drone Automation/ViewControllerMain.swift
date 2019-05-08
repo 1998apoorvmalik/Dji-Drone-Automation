@@ -19,6 +19,7 @@ class ViewControllerMain: UIViewController, DJISDKManagerDelegate{
     var product_connected: Bool = false
     
     @IBAction func startApp(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "segueToFlightModule", sender: self)
         if product_connected {
             self.performSegue(withIdentifier: "segueToFlightModule", sender: self)
         }
@@ -49,6 +50,7 @@ class ViewControllerMain: UIViewController, DJISDKManagerDelegate{
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        UIApplication.shared.isIdleTimerDisabled = true
         super.viewDidDisappear(animated)
         DJISDKManager.registerApp(with: self)
     }
@@ -101,5 +103,4 @@ class ViewControllerMain: UIViewController, DJISDKManagerDelegate{
         }
         showAlertViewWithTitle(title:"Register App", withMessage: message)
     }
-    
 }

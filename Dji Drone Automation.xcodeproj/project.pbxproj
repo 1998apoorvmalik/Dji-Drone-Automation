@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C086157F40E7E85D95FD5E06 /* libPods-Dji Drone Automation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F593E6E12A51E1585A3A4A01 /* libPods-Dji Drone Automation.a */; };
+		C4162957227C0F6700D2F7CD /* CustomLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4162956227C0F6700D2F7CD /* CustomLocation.swift */; };
 		C41C54602270AF7E00BC4170 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41C545F2270AF7E00BC4170 /* AppDelegate.swift */; };
 		C41C54622270AF7E00BC4170 /* ViewControllerMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41C54612270AF7E00BC4170 /* ViewControllerMain.swift */; };
 		C41C54652270AF7E00BC4170 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C41C54632270AF7E00BC4170 /* Main.storyboard */; };
@@ -15,13 +16,14 @@
 		C41C546A2270AF8000BC4170 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C41C54682270AF8000BC4170 /* LaunchScreen.storyboard */; };
 		C425613E2270C6CB002BFF43 /* DroneLocationUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C425613D2270C6CB002BFF43 /* DroneLocationUpdate.swift */; };
 		C42561432270CB42002BFF43 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42561422270CB42002BFF43 /* Annotation.swift */; };
-		C431FCBE2278A68800E8B2FA /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = C431FCBD2278A68800E8B2FA /* File.swift */; };
 		C48497182272219D00B7D12D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C48497172272219D00B7D12D /* GoogleService-Info.plist */; };
+		C49BCA9E22830A9A001D5A3A /* Watch Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C49BCA9D22830A9A001D5A3A /* Watch Interface.storyboard */; };
 		C4DC35252270DA6E0040F7C0 /* AutomatedMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DC35242270DA6E0040F7C0 /* AutomatedMission.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B1E84683485533A504C78355 /* Pods-Dji Drone Automation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dji Drone Automation.debug.xcconfig"; path = "Target Support Files/Pods-Dji Drone Automation/Pods-Dji Drone Automation.debug.xcconfig"; sourceTree = "<group>"; };
+		C4162956227C0F6700D2F7CD /* CustomLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLocation.swift; sourceTree = "<group>"; };
 		C41C545C2270AF7E00BC4170 /* Dji Drone Automation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dji Drone Automation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C41C545F2270AF7E00BC4170 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C41C54612270AF7E00BC4170 /* ViewControllerMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerMain.swift; sourceTree = "<group>"; };
@@ -31,8 +33,8 @@
 		C41C546B2270AF8000BC4170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C425613D2270C6CB002BFF43 /* DroneLocationUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneLocationUpdate.swift; sourceTree = "<group>"; };
 		C42561422270CB42002BFF43 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
-		C431FCBD2278A68800E8B2FA /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		C48497172272219D00B7D12D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C49BCA9D22830A9A001D5A3A /* Watch Interface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Watch Interface.storyboard"; sourceTree = "<group>"; };
 		C4DC35242270DA6E0040F7C0 /* AutomatedMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomatedMission.swift; sourceTree = "<group>"; };
 		F593E6E12A51E1585A3A4A01 /* libPods-Dji Drone Automation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dji Drone Automation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6A254DB7EAC750B450EF913 /* Pods-Dji Drone Automation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dji Drone Automation.release.xcconfig"; path = "Target Support Files/Pods-Dji Drone Automation/Pods-Dji Drone Automation.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,10 +93,11 @@
 				C48497172272219D00B7D12D /* GoogleService-Info.plist */,
 				C41C545F2270AF7E00BC4170 /* AppDelegate.swift */,
 				C41C54612270AF7E00BC4170 /* ViewControllerMain.swift */,
+				C4162956227C0F6700D2F7CD /* CustomLocation.swift */,
 				C4DC35242270DA6E0040F7C0 /* AutomatedMission.swift */,
-				C431FCBD2278A68800E8B2FA /* File.swift */,
 				C425613D2270C6CB002BFF43 /* DroneLocationUpdate.swift */,
 				C41C54632270AF7E00BC4170 /* Main.storyboard */,
+				C49BCA9D22830A9A001D5A3A /* Watch Interface.storyboard */,
 				C41C54662270AF8000BC4170 /* Assets.xcassets */,
 				C41C54682270AF8000BC4170 /* LaunchScreen.storyboard */,
 				C41C546B2270AF8000BC4170 /* Info.plist */,
@@ -166,6 +169,7 @@
 				C41C546A2270AF8000BC4170 /* LaunchScreen.storyboard in Resources */,
 				C48497182272219D00B7D12D /* GoogleService-Info.plist in Resources */,
 				C41C54672270AF8000BC4170 /* Assets.xcassets in Resources */,
+				C49BCA9E22830A9A001D5A3A /* Watch Interface.storyboard in Resources */,
 				C41C54652270AF7E00BC4170 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,11 +229,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C425613E2270C6CB002BFF43 /* DroneLocationUpdate.swift in Sources */,
-				C431FCBE2278A68800E8B2FA /* File.swift in Sources */,
 				C41C54622270AF7E00BC4170 /* ViewControllerMain.swift in Sources */,
 				C4DC35252270DA6E0040F7C0 /* AutomatedMission.swift in Sources */,
 				C42561432270CB42002BFF43 /* Annotation.swift in Sources */,
 				C41C54602270AF7E00BC4170 /* AppDelegate.swift in Sources */,
+				C4162957227C0F6700D2F7CD /* CustomLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
